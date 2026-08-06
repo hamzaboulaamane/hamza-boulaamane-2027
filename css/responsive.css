@@ -89,3 +89,27 @@ font-size:1.6rem;
 }
 
 }
+
+.about-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.stats{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+.skills-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.tool-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
