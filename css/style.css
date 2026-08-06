@@ -912,3 +912,377 @@ background:#3B82F6;
 color:white;
 
 }
+
+/*======================================================
+CERTIFICATIONS
+======================================================*/
+
+#certifications{
+
+    padding:100px 0;
+
+    background:var(--bg-secondary);
+
+}
+
+.certificate-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+
+    gap:35px;
+
+    margin-top:60px;
+
+}
+
+.certificate-card{
+
+    background:var(--bg-card);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    transition:.35s ease;
+
+    position:relative;
+
+}
+
+.certificate-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:4px;
+
+    background:var(--gradient-blue);
+
+}
+
+.certificate-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.35),
+    var(--shadow-blue);
+
+}
+
+/* ==========================
+   Certificate Image
+========================== */
+
+.certificate-card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:contain;
+
+    background:#fff;
+
+    padding:30px;
+
+    border-bottom:1px solid rgba(0,0,0,.08);
+
+}
+
+/* ==========================
+   Content
+========================== */
+
+.certificate-content{
+
+    padding:30px;
+
+}
+
+.certificate-content h3{
+
+    color:var(--white);
+
+    margin-bottom:10px;
+
+    font-size:1.3rem;
+
+}
+
+.certificate-content h4{
+
+    color:var(--secondary);
+
+    font-weight:500;
+
+    margin-bottom:12px;
+
+}
+
+.certificate-content p{
+
+    color:var(--gray);
+
+    margin-bottom:20px;
+
+}
+
+/* ==========================
+   Tags
+========================== */
+
+.certificate-tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:30px;
+
+}
+
+.certificate-tags span{
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    background:#0F172A;
+
+    color:var(--secondary);
+
+    font-size:.85rem;
+
+    border:1px solid rgba(59,130,246,.25);
+
+    transition:.3s;
+
+}
+
+.certificate-tags span:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   Button
+========================== */
+
+.certificate-content .btn{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   Small Animation
+========================== */
+
+.certificate-card{
+
+    animation:fadeUp .7s ease both;
+
+}
+
+.certificate-card:nth-child(2){
+
+    animation-delay:.1s;
+
+}
+
+.certificate-card:nth-child(3){
+
+    animation-delay:.2s;
+
+}
+
+.certificate-card:nth-child(4){
+
+    animation-delay:.3s;
+
+}
+
+.certificate-card:nth-child(5){
+
+    animation-delay:.4s;
+
+}
+
+/*======================================================
+RESPONSIVE
+======================================================*/
+
+@media(max-width:768px){
+
+    .certificate-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .certificate-card img{
+
+        height:180px;
+
+        padding:20px;
+
+    }
+
+    .certificate-content{
+
+        padding:25px;
+
+    }
+
+}
+
+/*======================================================
+RESUME
+======================================================*/
+
+#resume{
+
+    padding:100px 0;
+
+}
+
+.resume-download{
+
+    text-align:center;
+
+    margin:50px 0;
+
+}
+
+.resume-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:35px;
+
+}
+
+.resume-card{
+
+    background:var(--bg-card);
+
+    padding:35px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    transition:.35s;
+
+}
+
+.resume-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:var(--shadow-blue);
+
+}
+
+.resume-card h3{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:var(--secondary);
+
+    margin-bottom:30px;
+
+}
+
+.resume-card h3 i{
+
+    font-size:1.3rem;
+
+}
+
+.resume-item{
+
+    border-left:3px solid var(--primary);
+
+    padding-left:20px;
+
+}
+
+.resume-date{
+
+    color:var(--secondary);
+
+    font-weight:600;
+
+}
+
+.resume-item h4{
+
+    margin:10px 0;
+
+}
+
+.resume-list{
+
+    list-style:none;
+
+}
+
+.resume-list li{
+
+    margin-bottom:15px;
+
+    padding:12px 15px;
+
+    background:#0F172A;
+
+    border-radius:10px;
+
+    transition:.3s;
+
+}
+
+.resume-list li:hover{
+
+    background:var(--primary);
+
+    transform:translateX(8px);
+
+}
