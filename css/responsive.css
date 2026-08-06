@@ -119,3 +119,29 @@ grid-template-columns:repeat(2,1fr);
     grid-template-columns:1fr;
 
 }
+
+@media(max-width:900px){
+
+    .github-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .full{
+
+        grid-column:auto;
+
+    }
+
+}
+
+@media(max-width:900px){
+
+    .contact-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
