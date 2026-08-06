@@ -145,3 +145,166 @@ p{
     box-shadow:var(--shadow-blue);
 
 }
+
+/* ===========================================================
+   NAVBAR
+=========================================================== */
+
+.header{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    z-index:1000;
+
+    background:rgba(15,23,42,.75);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.navbar{
+
+    height:80px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:1.5rem;
+
+    font-weight:700;
+
+    color:var(--white);
+
+}
+
+.logo i{
+
+    color:var(--secondary);
+
+    font-size:1.8rem;
+
+}
+
+.logo span{
+
+    background:var(--gradient-blue);
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+/* =========================
+   MENU
+========================= */
+
+.nav-menu{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+.nav-link{
+
+    position:relative;
+
+    color:var(--gray);
+
+    font-weight:500;
+
+    transition:var(--transition);
+
+}
+
+.nav-link:hover{
+
+    color:var(--secondary);
+
+}
+
+.nav-link::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--secondary);
+
+    transition:.3s;
+
+}
+
+.nav-link:hover::after{
+
+    width:100%;
+
+}
+
+.nav-link.active{
+
+    color:var(--secondary);
+
+}
+
+/* =========================
+   HAMBURGER
+========================= */
+
+.hamburger{
+
+    display:none;
+
+    flex-direction:column;
+
+    cursor:pointer;
+
+    gap:5px;
+
+}
+
+.hamburger span{
+
+    width:28px;
+
+    height:3px;
+
+    background:white;
+
+    border-radius:10px;
+
+}
