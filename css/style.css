@@ -439,44 +439,30 @@ p{
 
 }
 
-.hero-image{
-
-    display:flex;
-
-    justify-content:center;
-
+.hero-image {
+    display: flex;
+    justify-content: center;
 }
 
-.image-circle{
+.image-circle {
+    width: 420px;
+    height: 420px;
 
-    width:420px;
+    border-radius: 12px; /* Square with slightly rounded corners */
+    overflow: hidden;
 
-    height:420px;
-
-    border-radius:50%;
-
-    overflow:hidden;
-
-    border:4px solid var(--primary);
+    border: 4px solid var(--primary);
 
     box-shadow:
-
-    0 0 40px rgba(59,130,246,.5),
-
-    0 0 90px rgba(6,182,212,.3);
-
+        0 0 40px rgba(59,130,246,.5),
+        0 0 90px rgba(6,182,212,.3);
 }
 
-.image-circle img{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
+.image-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-
 /*======================================================
 ABOUT
 ======================================================*/
