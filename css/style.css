@@ -902,6 +902,40 @@ color:white;
 /*======================================================
 CERTIFICATIONS
 ======================================================*/
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* Blue underline */
+
+.section-title h2::after {
+    content: "";
+
+    display: block;
+
+    width: 70px;
+    height: 4px;
+
+    margin: 15px auto 0;
+
+    border-radius: 10px;
+
+    background: var(--gradient-blue);
+}
 
 #certifications{
 
