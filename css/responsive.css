@@ -956,3 +956,116 @@ grid-template-columns:repeat(2,1fr);
         font-size: 17px;
     }
 }
+
+/* =========================================
+   CONTACT - MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .contact-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 100%;
+    }
+
+    /* Contact information */
+    .contact-info {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .contact-info h3 {
+        font-size: 20px;
+    }
+
+    .contact-info p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    .contact-item i {
+        flex-shrink: 0;
+    }
+
+    .contact-item span,
+    .contact-item a {
+        font-size: 13px;
+        word-break: break-word;
+    }
+
+
+    /* Contact form */
+    .contact-form {
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .contact-form h3 {
+        font-size: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    .contact-form input {
+        height: 45px;
+    }
+
+    .contact-form textarea {
+        min-height: 130px;
+        resize: vertical;
+    }
+
+    .contact-form .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+
+/* Smaller phones */
+@media (max-width: 480px) {
+
+    .contact-grid {
+        gap: 25px;
+    }
+
+    .contact-info,
+    .contact-form {
+        width: 94%;
+    }
+
+    .contact-form {
+        padding: 18px;
+    }
+
+    .contact-info h3,
+    .contact-form h3 {
+        font-size: 18px;
+    }
+
+    .contact-item {
+        gap: 10px;
+    }
+
+    .contact-item span,
+    .contact-item a {
+        font-size: 12px;
+    }
+}
