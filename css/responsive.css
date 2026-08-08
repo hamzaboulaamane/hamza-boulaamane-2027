@@ -958,83 +958,91 @@ grid-template-columns:repeat(2,1fr);
 }
 
 /* =========================================
-   CONTACT - MOBILE
+   CONTACT - PHONE FIX
    ========================================= */
 
 @media (max-width: 768px) {
 
-    .contact-grid {
+    #contact {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #contact .container {
+        width: 88%;
+        max-width: 88%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    #contact .contact-grid {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 30px;
-        width: 100%;
+        gap: 25px;
+        margin: 0;
     }
 
     /* Contact information */
-    .contact-info {
-        width: 90%;
-        margin: 0 auto;
+    #contact .contact-info {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
-    .contact-info h3 {
-        font-size: 20px;
+    /* Contact form */
+    #contact .contact-form {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 18px;
+        margin: 0;
     }
 
-    .contact-info p {
+    /* Make every form element stay inside */
+    #contact input,
+    #contact textarea,
+    #contact select {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    #contact textarea {
+        min-height: 110px;
+    }
+
+    /* Contact text */
+    #contact h3 {
+        font-size: 18px;
+    }
+
+    #contact p {
         font-size: 13px;
         line-height: 1.6;
     }
 
-    .contact-item {
+    #contact .contact-item {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
         display: flex;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 15px;
+        gap: 10px;
     }
 
-    .contact-item i {
-        flex-shrink: 0;
-    }
-
-    .contact-item span,
-    .contact-item a {
-        font-size: 13px;
+    #contact .contact-item span,
+    #contact .contact-item a {
+        min-width: 0;
+        max-width: 100%;
+        overflow-wrap: anywhere;
         word-break: break-word;
     }
 
-
-    /* Contact form */
-    .contact-form {
-        width: 90%;
-        margin: 0 auto;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-    .contact-form h3 {
-        font-size: 20px;
-    }
-
-    .contact-form input,
-    .contact-form textarea,
-    .contact-form select {
+    #contact .btn {
         width: 100%;
+        max-width: 100%;
         box-sizing: border-box;
-        font-size: 14px;
-    }
-
-    .contact-form input {
-        height: 45px;
-    }
-
-    .contact-form textarea {
-        min-height: 130px;
-        resize: vertical;
-    }
-
-    .contact-form .btn {
-        width: 100%;
-        margin-top: 10px;
     }
 }
 
@@ -1042,85 +1050,22 @@ grid-template-columns:repeat(2,1fr);
 /* Smaller phones */
 @media (max-width: 480px) {
 
-    .contact-grid {
-        gap: 25px;
+    #contact .container {
+        width: 90%;
+        max-width: 90%;
     }
 
-    .contact-info,
-    .contact-form {
-        width: 94%;
+    #contact .contact-form {
+        padding: 15px;
     }
 
-    .contact-form {
-        padding: 18px;
+    #contact h3 {
+        font-size: 17px;
     }
 
-    .contact-info h3,
-    .contact-form h3 {
-        font-size: 18px;
-    }
-
-    .contact-item {
-        gap: 10px;
-    }
-
-    .contact-item span,
-    .contact-item a {
+    #contact p,
+    #contact .contact-item span,
+    #contact .contact-item a {
         font-size: 12px;
-    }
-}
-
-@media (max-width: 768px) {
-
-    /* Smaller Contact Section */
-    .contact-grid {
-        gap: 25px;
-    }
-
-    .contact-info,
-    .contact-form {
-        width: 92%;
-        margin: 0 auto;
-    }
-
-    .contact-form {
-        padding: 18px;
-    }
-
-    .contact-info h3,
-    .contact-form h3 {
-        font-size: 18px;
-    }
-
-    .contact-info p {
-        font-size: 13px;
-    }
-
-    .contact-item {
-        margin-bottom: 12px;
-        gap: 10px;
-    }
-
-    .contact-item span,
-    .contact-item a {
-        font-size: 12px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        font-size: 13px;
-    }
-
-    .contact-form input {
-        height: 42px;
-    }
-
-    .contact-form textarea {
-        min-height: 110px;
-    }
-
-    .contact-form .btn {
-        padding: 10px 18px;
-        font-size: 13px;
     }
 }
