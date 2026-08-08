@@ -145,3 +145,138 @@ grid-template-columns:repeat(2,1fr);
     }
 
 }
+
+/* ========================= */
+/* Responsive Design */
+/* ========================= */
+
+/* Tablets */
+@media (max-width: 900px) {
+
+    .container {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero-image {
+        margin-top: 30px;
+    }
+
+    .skills-grid,
+    .projects-grid,
+    .resume-grid,
+    .certificates-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* Phones */
+@media (max-width: 600px) {
+
+    .container {
+        width: 90%;
+        margin: auto;
+    }
+
+    /* Navigation */
+    nav {
+        padding: 15px 0;
+    }
+
+    nav ul {
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li a {
+        font-size: 13px;
+    }
+
+    /* Sections */
+    section {
+        padding: 70px 0;
+    }
+
+    /* Titles */
+    .section-title h2 {
+        font-size: 28px;
+    }
+
+    .section-title p {
+        font-size: 14px;
+    }
+
+    /* Hero */
+    .hero {
+        min-height: auto;
+        padding: 100px 0 60px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .hero h2 {
+        font-size: 20px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    /* Profile picture */
+    .profile-img {
+        width: 220px;
+        height: 220px;
+    }
+
+    /* Buttons */
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .hero-buttons a {
+        width: 200px;
+        text-align: center;
+    }
+
+    /* Grids */
+    .skills-grid,
+    .projects-grid,
+    .resume-grid,
+    .certificates-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Cards */
+    .project-card,
+    .certificate-card,
+    .resume-card {
+        padding: 25px;
+    }
+
+    /* Images */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Contact */
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
