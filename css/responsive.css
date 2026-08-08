@@ -889,3 +889,70 @@ grid-template-columns:repeat(2,1fr);
     }
 
 }
+/* =========================================
+   SMALLER CARDS ON MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* Project cards */
+    .project-card {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .project-content {
+        padding: 18px;
+    }
+
+    .project-content h3 {
+        font-size: 18px;
+    }
+
+    .project-content p {
+        font-size: 13px;
+    }
+
+
+    /* Skill cards */
+    .skill-card {
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .skill-card h3 {
+        font-size: 17px;
+    }
+
+
+    /* Certificate cards */
+    .certificate-card {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .certificate-content {
+        padding: 18px;
+    }
+
+    .certificate-content h3 {
+        font-size: 17px;
+    }
+
+    .certificate-content p {
+        font-size: 13px;
+    }
+
+
+    /* Resume cards */
+    .resume-card {
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .resume-card h3 {
+        font-size: 17px;
+    }
+}
