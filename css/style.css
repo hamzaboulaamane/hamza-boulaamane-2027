@@ -1526,3 +1526,101 @@ footer{
     font-size:.9rem;
 
 }
+
+/* =========================
+   INTERACTIVE TERMINAL
+   ========================= */
+
+.terminal {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    background: #0b0f14;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    font-family: "Fira Code", "Courier New", monospace;
+}
+
+.terminal-header {
+    height: 38px;
+    background: #171b22;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 14px;
+}
+
+.terminal-header span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.red {
+    background: #ff5f56;
+}
+
+.yellow {
+    background: #ffbd2e;
+}
+
+.green {
+    background: #27c93f;
+}
+
+.terminal-body {
+    padding: 25px;
+    min-height: 400px;
+    max-height: 500px;
+    overflow-y: auto;
+    color: #d1d5db;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.command {
+    color: #22c55e;
+}
+
+.prompt {
+    color: #06b6d4;
+    margin-right: 8px;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+}
+
+#terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #f8fafc;
+    font-family: inherit;
+    font-size: inherit;
+    caret-color: #22c55e;
+}
+
+.terminal-line {
+    margin-bottom: 5px;
+}
+
+.terminal-command {
+    color: #f8fafc;
+}
+
+.terminal-error {
+    color: #ef4444;
+}
+
+.terminal-success {
+    color: #22c55e;
+}
+
+.terminal-info {
+    color: #38bdf8;
+}
