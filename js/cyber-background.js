@@ -5,7 +5,7 @@
    respects prefers-reduced-motion.
    ================================ */
 
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
     const canvas = document.getElementById('cyber-canvas');
     if (!canvas) return;
 
