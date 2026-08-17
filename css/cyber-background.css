@@ -1,0 +1,41 @@
+/* ================================
+   CYBERSECURITY DYNAMIC BACKGROUND
+   Full-page fixed canvas — sits behind
+   header, hero, about, everything.
+   ================================ */
+
+html, body {
+    background: #0f172a;
+}
+
+#cyber-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+/*
+  Because the canvas sits at z-index: -1 behind the ENTIRE page,
+  any section that should hide it needs its own background color
+  (solid or semi-transparent). Sections that should let the network
+  show through — like your hero — should stay transparent.
+
+  Example for a section that wants the network hidden behind it:
+
+  #about {
+      position: relative;
+      background: #0f172a;   // opaque, blocks the canvas
+  }
+
+  Example for a section that wants the network visible through it:
+
+  #home.hero {
+      background: transparent;
+  }
+*/
