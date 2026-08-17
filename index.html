@@ -205,7 +205,7 @@
 
             <!-- LEFT -->
 
-            <div class="terminal">
+          <div class="terminal">
 
     <div class="terminal-header">
         <span class="red"></span>
@@ -213,11 +213,17 @@
         <span class="green"></span>
     </div>
 
-    <div class="terminal-body">
+    <div class="terminal-body" id="terminal-body">
 
         <div id="terminal-output">
-            <div>Welcome to Hamza's terminal.</div>
-            <div>Type <span class="command">help</span> to see available commands.</div>
+            <div class="terminal-success">
+                Welcome to Hamza's terminal.
+            </div>
+
+            <div class="terminal-success">
+                Type <span class="command">help</span> to see available commands.
+            </div>
+
             <br>
         </div>
 
@@ -228,7 +234,7 @@
                 type="text"
                 id="terminal-input"
                 autocomplete="off"
-                autofocus
+                spellcheck="false"
             >
         </div>
 

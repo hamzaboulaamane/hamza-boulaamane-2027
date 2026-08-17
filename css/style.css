@@ -1624,3 +1624,49 @@ footer{
 .terminal-info {
     color: #38bdf8;
 }
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+}
+
+#terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: #f8fafc;
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 15px;
+    caret-color: #22c55e;
+    padding: 0;
+    margin: 0;
+}
+
+#terminal-input:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.prompt {
+    color: #22c55e;
+    margin-right: 8px;
+}
+
+.terminal-success {
+    color: #22c55e;
+}
+
+.terminal-info {
+    color: #38bdf8;
+}
+
+.terminal-error {
+    color: #ef4444;
+}
+
+.terminal-command {
+    color: #f8fafc;
+}
