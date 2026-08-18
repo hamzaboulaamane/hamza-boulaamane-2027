@@ -213,8 +213,8 @@ p{
 
     background:var(--gradient-blue);
 
-    -webkit-background-clip:text;
-
+    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color:transparent;
 
 }
@@ -1625,39 +1625,36 @@ footer{
     color: #38bdf8;
 }
 
-/* =========================================
-   CYBERSECURITY HERO
-   ========================================= */
+/* ================================
+   CYBERSECURITY HERO BACKGROUND
+   ================================ */
+
+* {
+    box-sizing: border-box;
+}
 
 .hero {
     position: relative;
-    min-height: 100vh;
     width: 100%;
+    height: 100vh;
+    min-height: 650px;
     overflow: hidden;
-
-    display: flex;
-    align-items: center;
-
     background: #0f172a;
 }
 
-/* Animated canvas */
-
+/* Canvas */
 #cyber-canvas {
     position: absolute;
     inset: 0;
-
     width: 100%;
     height: 100%;
-
     z-index: 0;
+    display: block;
 }
 
-/* Dark gradient over animation */
-
+/* Dark vignette over the animation */
 .hero::after {
     content: "";
-
     position: absolute;
     inset: 0;
 
@@ -1665,216 +1662,142 @@ footer{
         radial-gradient(
             circle at center,
             transparent 0%,
-            rgba(15, 23, 42, 0.25) 45%,
-            rgba(15, 23, 42, 0.9) 100%
+            rgba(15, 23, 42, 0.18) 45%,
+            rgba(15, 23, 42, 0.72) 100%
         );
 
     pointer-events: none;
-
     z-index: 1;
 }
 
-/* Hero content */
+/* ================================
+   HERO CONTENT
+   ================================ */
 
 .hero-content {
     position: relative;
-
     z-index: 2;
 
-    max-width: 900px;
-
-    margin-left: 8%;
-
-    padding: 40px 20px;
-}
-
-/* Terminal */
-
-.hero-terminal {
-    font-family: "Fira Code", monospace;
-
-    font-size: 16px;
-
-    color: #22c55e;
-
-    margin-bottom: 20px;
+    width: 100%;
+    height: 100%;
 
     display: flex;
     align-items: center;
 
-    gap: 2px;
+    padding-left: 7vw;
+}
+
+.hero-text {
+    color: #f8fafc;
+}
+
+/* Terminal line */
+
+.hero-terminal {
+    color: #22c55e;
+    font-family: "Courier New", monospace;
+    font-size: 15px;
+    margin-bottom: 18px;
 }
 
 .hero-terminal span {
     color: #06b6d4;
 }
 
-.hero-terminal .cursor {
-    display: inline-block;
-
-    width: 9px;
-    height: 18px;
-
-    background: #22c55e;
-
-    margin-left: 4px;
-
-    animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-
-    0%,
-    50% {
-        opacity: 1;
-    }
-
-    50.01%,
-    100% {
-        opacity: 0;
-    }
-}
-
 /* Main title */
 
-.hero h1 {
-    font-family: "Space Grotesk", sans-serif;
-
-    font-size: clamp(3rem, 7vw, 6rem);
-
-    line-height: 1;
-
+.hero-title {
     margin: 0;
 
-    color: #f8fafc;
-
-    font-weight: 800;
-
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.95;
     letter-spacing: -3px;
+
+    color: #f8fafc;
 }
 
-.hero h1 span {
+.hero-title span {
     color: #06b6d4;
 
     text-shadow:
-        0 0 20px rgba(6, 182, 212, 0.35);
-}
-
-/* Subtitle */
-
-.hero h2 {
-    font-family: "Space Grotesk", sans-serif;
-
-    margin-top: 25px;
-
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
-
-    color: #94a3b8;
-
-    font-weight: 500;
+        0 0 10px rgba(6, 182, 212, 0.35),
+        0 0 25px rgba(6, 182, 212, 0.45);
 }
 
 /* Description */
 
 .hero-description {
-    max-width: 650px;
+    max-width: 560px;
 
-    margin-top: 20px;
+    margin-top: 24px;
 
-    font-size: 1.1rem;
+    color: #94a3b8;
 
-    line-height: 1.8;
-
-    color: #cbd5e1;
+    font-size: 1.15rem;
+    line-height: 1.7;
 }
 
-/* Buttons */
+/* ================================
+   OPTIONAL BUTTONS
+   ================================ */
 
 .hero-buttons {
     display: flex;
-
     gap: 15px;
-
-    margin-top: 35px;
+    margin-top: 30px;
 }
 
 .hero-buttons a {
-    text-decoration: none;
+    padding: 12px 22px;
 
-    padding: 13px 25px;
-
+    border: 1px solid #06b6d4;
     border-radius: 6px;
 
-    font-weight: 600;
+    color: #06b6d4;
+    text-decoration: none;
 
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Fira Code", monospace;
 
-    transition: 0.3s ease;
-
-    display: inline-block;
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
 }
 
-/* Primary button */
-
-.btn-primary {
-    background: #06b6d4;
-
-    color: #0f172a;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
+.hero-buttons a:hover {
+    background: rgba(6, 182, 212, 0.1);
 
     box-shadow:
-        0 0 25px rgba(6, 182, 212, 0.45);
+        0 0 15px rgba(6, 182, 212, 0.25),
+        inset 0 0 15px rgba(6, 182, 212, 0.05);
+
+    transform: translateY(-2px);
 }
 
-/* Secondary button */
-
-.btn-secondary {
-    border: 1px solid #334155;
-
-    color: #e2e8f0;
-
-    background: rgba(15, 23, 42, 0.5);
-}
-
-.btn-secondary:hover {
-    border-color: #06b6d4;
-
-    color: #06b6d4;
-
-    transform: translateY(-3px);
-}
-
-/* Mobile */
+/* ================================
+   RESPONSIVE
+   ================================ */
 
 @media (max-width: 768px) {
 
-    .hero-content {
-        margin-left: 0;
-
-        padding: 30px;
+    .hero {
+        min-height: 600px;
     }
 
-    .hero h1 {
+    .hero-content {
+        padding: 0 8vw;
+    }
+
+    .hero-title {
+        font-size: clamp(3rem, 15vw, 5rem);
         letter-spacing: -2px;
     }
 
-    .hero-buttons {
-        flex-direction: column;
-
-        width: fit-content;
+    .hero-description {
+        font-size: 1rem;
     }
-}
 
-/* Reduced motion */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .hero-terminal .cursor {
-        animation: none;
-
-        opacity: 1;
+    .hero-terminal {
+        font-size: 12px;
     }
 }

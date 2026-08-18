@@ -377,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-(function () {
+(() => {
 
     const canvas = document.getElementById("cyber-canvas");
 
@@ -396,53 +396,34 @@ document.addEventListener("DOMContentLoaded", () => {
     let nodes = [];
     let packets = [];
 
+    /* ================================
+       CONFIGURATION
+       ================================ */
+
+    const LINK_DIST = 165;
+    const MOUSE_RADIUS = 190;
+
     const mouse = {
-        x: null,
-        y: null,
+        x: 0,
+        y: 0,
         active: false
     };
 
-    const prefersReducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-    const NODE_COLOR = "#06b6d4";
-
-    const NODE_GLOW =
-        "rgba(6, 182, 212, 0.9)";
-
-    const LINE_COLOR =
-        "rgba(34, 197, 94, 0.55)";
-
-    const PACKET_COLOR = "#22c55e";
-
-    const LINK_DIST = 150;
-
-    const MOUSE_RADIUS = 160;
-
-
-    /* ===============================
-       RESIZE
-       =============================== */
+    /* ================================
+       RESIZE CANVAS
+       ================================ */
 
     function resize() {
 
-        dpr = Math.min(
-            window.devicePixelRatio || 1,
-            2
-        );
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
 
         width = hero.clientWidth;
-
         height = hero.clientHeight;
 
         canvas.width = width * dpr;
-
         canvas.height = height * dpr;
 
         canvas.style.width = width + "px";
-
         canvas.style.height = height + "px";
 
         ctx.setTransform(
@@ -457,150 +438,130 @@ document.addEventListener("DOMContentLoaded", () => {
         initNodes();
     }
 
-
-    /* ===============================
+    /* ================================
        CREATE NETWORK NODES
-       =============================== */
+       ================================ */
 
     function initNodes() {
 
-        const density = 9000;
-
         const count = Math.max(
-            20,
+            40,
             Math.min(
-                90,
-                Math.floor(
-                    (width * height) / density
-                )
+                140,
+                Math.floor((width * height) / 6500)
             )
         );
 
-        nodes = [];
-
-        for (let i = 0; i < count; i++) {
-
-            nodes.push({
+        nodes = Array.from(
+            { length: count },
+            () => ({
 
                 x: Math.random() * width,
-
                 y: Math.random() * height,
 
-                vx:
-                    (Math.random() - 0.5) *
-                    0.25,
+                vx: (Math.random() - 0.5) * 0.55,
+                vy: (Math.random() - 0.5) * 0.55,
 
-                vy:
-                    (Math.random() - 0.5) *
-                    0.25,
+                r: Math.random() * 1.5 + 1
+            })
+        );
 
-                r:
-                    Math.random() * 1.4 +
-                    1.2
-
-            });
-
-        }
+        packets = [];
     }
 
-
-    /* ===============================
+    /* ================================
        CREATE DATA PACKETS
-       =============================== */
+       ================================ */
 
-    function maybeSpawnPacket() {
+    function spawnPacket() {
 
         if (nodes.length < 2) return;
 
-        if (Math.random() > 0.02) return;
+        /*
+         * Controls how often packets appear.
+         */
+        if (Math.random() > 0.035) return;
 
         const a =
             nodes[
                 Math.floor(
-                    Math.random() *
-                    nodes.length
+                    Math.random() * nodes.length
                 )
             ];
 
-        let closest = null;
+        let b = null;
+        let best = Infinity;
 
-        let closestDist = Infinity;
+        /*
+         * Find a nearby node.
+         */
+        for (const candidate of nodes) {
 
-        for (const b of nodes) {
+            if (candidate === a) continue;
 
-            if (b === a) continue;
-
-            const distance =
-                Math.hypot(
-                    a.x - b.x,
-                    a.y - b.y
-                );
+            const distance = Math.hypot(
+                a.x - candidate.x,
+                a.y - candidate.y
+            );
 
             if (
                 distance < LINK_DIST &&
-                distance < closestDist
+                distance < best
             ) {
 
-                closestDist = distance;
-
-                closest = b;
+                best = distance;
+                b = candidate;
             }
         }
 
-        if (closest) {
+        if (!b) return;
 
-            packets.push({
+        packets.push({
 
-                a: a,
+            a: a,
+            b: b,
 
-                b: closest,
+            t: 0,
 
-                t: 0,
-
-                speed:
-                    0.012 +
-                    Math.random() *
-                    0.012
-
-            });
-        }
+            speed:
+                0.008 +
+                Math.random() * 0.012
+        });
     }
 
+    /* ================================
+       UPDATE NETWORK
+       ================================ */
 
-    /* ===============================
-       UPDATE
-       =============================== */
-
-    function step() {
+    function update() {
 
         for (const node of nodes) {
 
             node.x += node.vx;
-
             node.y += node.vy;
 
-
-            /* Bounce from edges */
-
+            /*
+             * Bounce from screen edges.
+             */
             if (
-                node.x < 0 ||
-                node.x > width
+                node.x <= 0 ||
+                node.x >= width
             ) {
 
                 node.vx *= -1;
             }
 
             if (
-                node.y < 0 ||
-                node.y > height
+                node.y <= 0 ||
+                node.y >= height
             ) {
 
                 node.vy *= -1;
             }
 
-
-            /* Mouse interaction */
-
+            /*
+             * Mouse interaction.
+             */
             if (mouse.active) {
 
                 const dx =
@@ -621,7 +582,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         (1 -
                             distance /
                                 MOUSE_RADIUS) *
-                        0.6;
+                        0.8;
 
                     node.x +=
                         (dx / distance) *
@@ -634,27 +595,27 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-
-        /* Update packets */
-
-        packets =
-            packets.filter(
-                packet =>
-                    packet.t < 1
-            );
-
+        /*
+         * Move packets.
+         */
         for (const packet of packets) {
 
             packet.t += packet.speed;
         }
 
-        maybeSpawnPacket();
+        /*
+         * Remove finished packets.
+         */
+        packets = packets.filter(
+            packet => packet.t < 1
+        );
+
+        spawnPacket();
     }
 
-
-    /* ===============================
-       DRAW
-       =============================== */
+    /* ================================
+       DRAW NETWORK
+       ================================ */
 
     function draw() {
 
@@ -665,10 +626,9 @@ document.addEventListener("DOMContentLoaded", () => {
             height
         );
 
-
-        /* ---------------------------
+        /* ------------------------------
            NETWORK CONNECTIONS
-           --------------------------- */
+           ------------------------------ */
 
         for (
             let i = 0;
@@ -683,7 +643,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ) {
 
                 const a = nodes[i];
-
                 const b = nodes[j];
 
                 const distance =
@@ -692,18 +651,16 @@ document.addEventListener("DOMContentLoaded", () => {
                         a.y - b.y
                     );
 
-                if (
-                    distance < LINK_DIST
-                ) {
+                if (distance < LINK_DIST) {
 
                     ctx.globalAlpha =
                         (1 -
                             distance /
                                 LINK_DIST) *
-                        0.5;
+                        0.75;
 
                     ctx.strokeStyle =
-                        LINE_COLOR;
+                        "#22c55e";
 
                     ctx.lineWidth = 1;
 
@@ -726,22 +683,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ctx.globalAlpha = 1;
 
-
-        /* ---------------------------
+        /* ------------------------------
            NETWORK NODES
-           --------------------------- */
+           ------------------------------ */
 
         for (const node of nodes) {
 
             ctx.beginPath();
 
-            ctx.fillStyle =
-                NODE_COLOR;
+            ctx.fillStyle = "#06b6d4";
 
             ctx.shadowColor =
-                NODE_GLOW;
+                "rgba(6,182,212,.9)";
 
-            ctx.shadowBlur = 6;
+            ctx.shadowBlur = 8;
 
             ctx.arc(
                 node.x,
@@ -756,82 +711,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ctx.shadowBlur = 0;
 
-
-        /* ---------------------------
+        /* ------------------------------
            DATA PACKETS
-           --------------------------- */
+           ------------------------------ */
 
         for (const packet of packets) {
 
             const x =
                 packet.a.x +
-                (packet.b.x -
-                    packet.a.x) *
+                (packet.b.x - packet.a.x) *
                     packet.t;
 
             const y =
                 packet.a.y +
-                (packet.b.y -
-                    packet.a.y) *
+                (packet.b.y - packet.a.y) *
                     packet.t;
 
-            const alpha =
+            /*
+             * Fade packet at beginning/end.
+             */
+            ctx.globalAlpha =
                 Math.sin(
-                    packet.t *
-                        Math.PI
+                    packet.t * Math.PI
                 );
 
+            ctx.fillStyle = "#22c55e";
+
+            ctx.shadowColor = "#22c55e";
+            ctx.shadowBlur = 12;
+
             ctx.beginPath();
-
-            ctx.fillStyle =
-                PACKET_COLOR;
-
-            ctx.shadowColor =
-                PACKET_COLOR;
-
-            ctx.shadowBlur = 8;
-
-            ctx.globalAlpha =
-                alpha;
 
             ctx.arc(
                 x,
                 y,
-                2.2,
+                2.5,
                 0,
                 Math.PI * 2
             );
 
             ctx.fill();
-
-            ctx.globalAlpha = 1;
         }
 
+        ctx.globalAlpha = 1;
         ctx.shadowBlur = 0;
     }
 
-
-    /* ===============================
+    /* ================================
        ANIMATION LOOP
-       =============================== */
+       ================================ */
 
     function loop() {
 
-        step();
-
+        update();
         draw();
 
         requestAnimationFrame(loop);
     }
 
-
-    /* ===============================
-       MOUSE
-       =============================== */
+    /* ================================
+       MOUSE INTERACTION
+       ================================ */
 
     hero.addEventListener(
         "mousemove",
-        function (event) {
+        event => {
 
             const rect =
                 hero.getBoundingClientRect();
@@ -848,35 +792,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-
     hero.addEventListener(
         "mouseleave",
-        function () {
+        () => {
 
             mouse.active = false;
         }
     );
 
-
-    /* ===============================
-       INITIALIZE
-       =============================== */
+    /* ================================
+       RESIZE
+       ================================ */
 
     window.addEventListener(
         "resize",
         resize
     );
 
+    /* ================================
+       START
+       ================================ */
+
     resize();
-
-
-    if (prefersReducedMotion) {
-
-        draw();
-
-    } else {
-
-        loop();
-    }
+    loop();
 
 })();
