@@ -1814,3 +1814,100 @@ footer{
 
     pointer-events: none;
 }
+
+.hero {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.hero-container {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    width: 1200px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    gap: 60px !important;
+    align-items: center !important;
+}
+
+/* THIS IS THE IMPORTANT FIX */
+.hero-content {
+    display: block !important;
+    position: static !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+}
+
+/* Force everything inside the content to stay in normal flow */
+.hero-content > * {
+    position: static !important;
+    float: none !important;
+    transform: none !important;
+}
+
+.hero-tag {
+    display: block !important;
+    margin: 0 0 10px !important;
+}
+
+.hero h1 {
+    display: block !important;
+    margin: 0 0 20px !important;
+}
+
+.hero h2 {
+    display: block !important;
+    margin: 0 0 20px !important;
+}
+
+.hero-description {
+    display: block !important;
+    width: auto !important;
+    max-width: 600px !important;
+    margin: 0 0 30px !important;
+}
+
+.hero-buttons {
+    display: flex !important;
+    position: static !important;
+    flex-direction: row !important;
+    gap: 20px !important;
+    margin: 0 0 30px !important;
+}
+
+.social-icons {
+    display: flex !important;
+    position: static !important;
+    flex-direction: row !important;
+    gap: 15px !important;
+}
+
+.social-icons a {
+    position: static !important;
+    flex-shrink: 0 !important;
+}
+
+.hero-image {
+    position: static !important;
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    width: auto !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.image-circle {
+    position: static !important;
+    width: 400px !important;
+    height: 400px !important;
+    min-width: 400px !important;
+    max-width: 400px !important;
+    min-height: 400px !important;
+    max-height: 400px !important;
+    transform: none !important;
+}
