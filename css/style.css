@@ -1801,3 +1801,54 @@ footer{
         font-size: 12px;
     }
 }
+/* ========================================
+   CYBER NETWORK BACKGROUND
+======================================== */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+
+    background: #0f172a;
+}
+
+/* Canvas must be behind everything */
+#cyber-canvas {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Put your actual hero content above canvas */
+.hero-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Dark gradient over the network */
+.hero::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 0%,
+            rgba(15, 23, 42, 0.15) 40%,
+            rgba(15, 23, 42, 0.75) 100%
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
+}
