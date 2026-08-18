@@ -352,12 +352,12 @@ p{
     position: relative;
     z-index: 2;
 
-    width: 1200px;
-    max-width: 1200px;
+    width: 1350px;
+    max-width: 1350px;
     margin: 0 auto;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 614px;
     align-items: center;
     gap: 60px;
 }
@@ -468,15 +468,14 @@ p{
 
 /* Profile image */
 .image-circle {
-    width: 450px;
-    height: 450px;
+    width: 614px;
+    height: 525px;
 
     flex-shrink: 0;
-
     border-radius: 12px;
     overflow: hidden;
-
     border: 3px solid #3b82f6;
+    box-sizing: border-box;
 }
 
 .image-circle img {
